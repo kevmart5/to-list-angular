@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+
+            <form class="row g-3 needs-validation" novalidate>
+                <div class="col-md-8">
+                    <label for="validationCustom01" class="form-label">Nueva tarea</label>
+                    <input type="text" class="form-control" id="validationCustom01" placeholder="Descripcion" [formControl]="newTask" required>
+                </div>
+                <div class="col-md-12">
+                    <button class="btn btn-primary" type="button" (click)="addNewTask()">Agregar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="list-items-container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Tareas nuevas</h2>
+            </div>
+            <div class="col-md-8">
+                <ul class="list-group list-group-flush">
+                    
+                    <li  *ngFor="let item of listItem" class="list-group-item">
+                        <input class="form-check-input me-1" type="checkbox" value="" aria-label="..." (change)="onCheckedTask(item)" [(ngModel)]="item.checked">
+                        {{item.description}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="list-items-container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Tareas completadas</h2>
+            </div>
+            <div class="col-md-8">
+                <ul class="list-group list-group-flush">
+                    <li *ngFor="let item of completeListItems" class="list-group-item">
+                        <input class="form-check-input me-1" type="checkbox" value="" aria-label="..."
+                            (change)="onCheckedTask(item)"
+                            [(ngModel)]="item.checked">
+                        <span class="list-item-completed">{{item.description}}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
